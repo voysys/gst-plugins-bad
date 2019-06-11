@@ -4,7 +4,12 @@ rtmp_sources = [
   'gstrtmpsrc.c',
 ]
 
-rtmp_dep = dependency('librtmp', required : get_option('rtmp'))
+rtmp_lib_path = 'C:/dev/gst-build/thirdparty/librtmp/lib'
+rtmp_include_path = 'C:/dev/gst-build/thirdparty/librtmp/include'
+
+rtmp_lib = cc.find_library('rtmp', dirs: rtmp_lib_path, required: true)
+
+rtmp_dep = declare_dependency(include_directories: include_directories(rtmp_include_path), dependencies:  rtmp_lib)
 
 if rtmp_dep.found()
   gstrtmp = library('gstrtmp',

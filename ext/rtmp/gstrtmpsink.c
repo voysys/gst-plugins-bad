@@ -362,8 +362,9 @@ gst_rtmp_sink_uri_set_uri (GstURIHandler * handler, const gchar * uri,
       sink->uri = g_strdup (uri);
     }
 
-    if (playpath.av_val)
-      free (playpath.av_val);
+    // if (playpath.av_val != NULL) {
+    //   g_free(playpath.av_val);
+    // }
   }
 
   if (ret) {
